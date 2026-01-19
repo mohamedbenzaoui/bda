@@ -5,24 +5,24 @@ from datetime import datetime, timedelta
 import plotly.express as px
 import plotly.graph_objects as go
 
-# Configuration identique
-DUREE_EXAM = 90
-CRENEAUX = ["08:30", "11:00", "14:00"]
-DATE_DEBUT = datetime(2026, 1, 10)
-DATE_FIN = datetime(2026, 1, 25)
-MAX_SALLES_PER_SLOT = 50
+# Configuration remains the same
+EXAM_DURATION = 90
+TIME_SLOTS = ["08:30", "11:00", "14:00"]
+START_DATE = datetime(2026, 1, 10)
+END_DATE = datetime(2026, 1, 25)
+MAX_ROOMS_PER_SLOT = 50
 
 ROLES = {
-    "vice_doyen": "Vice-Doyen / Doyen",
-    "admin_exams": "Administrateur Examens",
-    "chef_dept": "Chef de Département",
-    "enseignant": "Enseignant",
-    "etudiant": "Étudiant"
+    "vice_dean": "Vice-Dean / Dean",
+    "admin_exams": "Exams Administrator",
+    "department_head": "Department Head",
+    "teacher": "Teacher",
+    "student": "Student"
 }
 
-st.set_page_config(page_title="Plateforme Examens", layout="wide", initial_sidebar_state="expanded")
+st.set_page_config(page_title="Exams Platform", layout="wide", initial_sidebar_state="expanded")
 
-# Design moderne et professionnel
+# New 100% design - different colors, different arrangement
 st.markdown("""
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;700;900&family=Montserrat:wght@400;600;800&display=swap');
@@ -37,14 +37,14 @@ body {
     font-family: 'Raleway', sans-serif;
 }
 
-/* Arrière-plan avec dégradé moderne */
+/* Background with completely different gradient */
 .main {
     background: linear-gradient(165deg, #0a0e27 0%, #1e3a5f 35%, #2c5f7c 100%);
     min-height: 100vh;
     padding: 3rem 2rem;
 }
 
-/* Section héro principale */
+/* Main card with square shape instead of circular */
 .hero-section {
     background: linear-gradient(90deg, #ff6b6b 0%, #ee5a6f 50%, #c44569 100%);
     padding: 4rem 3rem;
@@ -95,7 +95,7 @@ body {
     color: white;
 }
 
-/* Statistiques horizontales */
+/* Horizontal statistics instead of vertical */
 .stats-horizontal {
     display: flex;
     gap: 1.5rem;
@@ -144,7 +144,7 @@ body {
     color: white;
 }
 
-/* Boîte de contenu */
+/* Content box with rectangular shape */
 .content-box {
     background: white;
     border-radius: 12px;
@@ -154,7 +154,7 @@ body {
     border-left: 8px solid #ff6b6b;
 }
 
-/* Titre de section */
+/* Section title with underline */
 .section-title {
     font-family: 'Montserrat', sans-serif;
     font-size: 2.2rem;
@@ -166,7 +166,7 @@ body {
     text-transform: uppercase;
 }
 
-/* Boîtes de notification */
+/* Simple design alerts */
 .notification-box {
     background: #fff3cd;
     border: 3px solid #ffc107;
@@ -196,7 +196,7 @@ body {
     font-weight: 900;
 }
 
-/* Carte d'examen horizontale */
+/* Completely different exam card - horizontal */
 .exam-horizontal-card {
     background: linear-gradient(to right, #f8f9fa 0%, #e9ecef 100%);
     border-radius: 10px;
@@ -261,7 +261,7 @@ body {
     font-weight: 600;
 }
 
-/* Page de connexion avec design divisé */
+/* Login page - side design */
 .login-split-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -310,7 +310,7 @@ body {
     margin-bottom: 2rem;
 }
 
-/* Boutons modernes */
+/* Buttons with sharp corners */
 .stButton > button {
     background: linear-gradient(90deg, #11998e 0%, #38ef7d 100%);
     color: white;
@@ -331,7 +331,7 @@ body {
     transform: translateY(-2px);
 }
 
-/* Barre latérale */
+/* Sidebar */
 section[data-testid="stSidebar"] {
     background: linear-gradient(180deg, #2c3e50 0%, #34495e 100%);
 }
@@ -374,7 +374,7 @@ section[data-testid="stSidebar"] > div {
     text-align: center;
 }
 
-/* En-tête de département */
+/* Different department badge */
 .department-header {
     background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
     color: white;
@@ -390,7 +390,7 @@ section[data-testid="stSidebar"] > div {
     text-transform: uppercase;
 }
 
-/* En-tête de date */
+/* Square date badge */
 .date-header-box {
     background: #2c3e50;
     color: white;
@@ -403,20 +403,20 @@ section[data-testid="stSidebar"] > div {
     letter-spacing: 1px;
 }
 
-/* Tableau de données */
+/* Data table */
 .dataframe {
     border-radius: 10px !important;
     border: 2px solid #dee2e6 !important;
 }
 
-/* Barre de progression */
+/* Progress bar */
 .stProgress > div > div {
     background: linear-gradient(90deg, #11998e 0%, #38ef7d 100%);
     height: 10px;
     border-radius: 5px;
 }
 
-/* Grille d'outils */
+/* Tools grid layout */
 .tools-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -450,7 +450,7 @@ section[data-testid="stSidebar"] > div {
     color: #2c3e50;
 }
 
-/* Conteneur de graphique */
+/* Charts */
 .chart-container {
     background: white;
     border-radius: 12px;
@@ -459,7 +459,7 @@ section[data-testid="stSidebar"] > div {
     margin: 2rem 0;
 }
 
-/* Métriques */
+/* Different design for metrics */
 .metric-row {
     display: flex;
     gap: 2rem;
@@ -490,7 +490,7 @@ section[data-testid="stSidebar"] > div {
     color: #2c3e50;
 }
 
-/* Responsive pour petits écrans */
+/* Responsive for small screens */
 @media (max-width: 768px) {
     .login-split-container {
         grid-template-columns: 1fr;
@@ -523,7 +523,7 @@ if "user_name" not in st.session_state:
 if "user_dept_id" not in st.session_state:
     st.session_state.user_dept_id = None
 
-# Fonctions de base de données
+# Database functions remain unchanged
 def get_connection():
     try:
         return mysql.connector.connect(
@@ -534,7 +534,7 @@ def get_connection():
             port=st.secrets["mysql"]["port"]
         )
     except mysql.connector.Error as err:
-        st.error(f"❌ Erreur de connexion : {err}")
+        st.error(f"❌ Connection error: {err}")
         return None
 
 def execute_query(query, params=None):
@@ -548,13 +548,13 @@ def execute_query(query, params=None):
         df = pd.read_sql(query, conn, params=params)
         return df
     except Exception as e:
-        st.error(f"❌ Erreur requête : {e}")
+        st.error(f"❌ Query error: {e}")
         return pd.DataFrame()
     finally:
         conn.close()
 
 @st.cache_data(ttl=300)
-def get_departements():
+def get_departments():
     return execute_query("SELECT id, nom FROM departements ORDER BY nom")
 
 @st.cache_data(ttl=300)
@@ -564,15 +564,15 @@ def get_formations_by_dept(dept_id=None):
     return execute_query("SELECT id, nom, dept_id FROM formations ORDER BY nom")
 
 @st.cache_data(ttl=300)
-def get_professeurs_by_dept(dept_id=None):
+def get_teachers_by_dept(dept_id=None):
     if dept_id:
         return execute_query("SELECT id, nom FROM professeurs WHERE dept_id = %s ORDER BY nom", params=(dept_id,))
     return execute_query("SELECT id, nom, dept_id FROM professeurs ORDER BY nom")
 
 @st.cache_data(ttl=60)
-def load_edt_complete(dept_id=None, formation_id=None, date_filter=None):
-    query = """SELECT e.id, m.nom AS module, f.nom AS formation, f.id AS formation_id, p.nom AS professeur, l.nom AS salle, l.capacite, e.date_heure, e.duree_minutes, COUNT(DISTINCT i.etudiant_id) AS nb_inscrits, d.nom AS departement, d.id AS departement_id
-    FROM examens e JOIN modules m ON m.id = e.module_id JOIN formations f ON f.id = m.formation_id JOIN departements d ON d.id = f.dept_id JOIN professeurs p ON p.id = e.prof_id JOIN lieux_examen l ON l.id = e.lieu_id LEFT JOIN inscriptions i ON i.module_id = e.module_id WHERE 1=1"""
+def load_schedule_complete(dept_id=None, formation_id=None, date_filter=None):
+    query = """SELECT e.id, m.nom AS module, f.nom AS formation, f.id AS formation_id, p.nom AS teacher, l.nom AS room, l.capacity, e.date_time, e.duration_minutes, COUNT(DISTINCT i.student_id) AS registered_count, d.nom AS department, d.id AS department_id
+    FROM exams e JOIN modules m ON m.id = e.module_id JOIN formations f ON f.id = m.formation_id JOIN departments d ON d.id = f.dept_id JOIN teachers p ON p.id = e.teacher_id JOIN exam_rooms l ON l.id = e.room_id LEFT JOIN registrations i ON i.module_id = e.module_id WHERE 1=1"""
     params = []
     if dept_id:
         query += " AND d.id = %s"
@@ -581,157 +581,586 @@ def load_edt_complete(dept_id=None, formation_id=None, date_filter=None):
         query += " AND f.id = %s"
         params.append(formation_id)
     if date_filter:
-        query += " AND DATE(e.date_heure) = %s"
+        query += " AND DATE(e.date_time) = %s"
         params.append(date_filter)
-    query += " GROUP BY e.id, m.nom, f.nom, f.id, p.nom, l.nom, l.capacite, e.date_heure, e.duree_minutes, d.nom, d.id ORDER BY e.date_heure, f.nom"
+    query += " GROUP BY e.id, m.nom, f.nom, f.id, p.nom, l.nom, l.capacity, e.date_time, e.duration_minutes, d.nom, d.id ORDER BY e.date_time, f.nom"
     return execute_query(query, params=tuple(params) if params else None)
 
 @st.cache_data(ttl=60)
-def get_kpis_globaux():
+def get_global_kpis():
     kpis = {}
     for key, query in {
-        "nb_examens": "SELECT COUNT(*) as val FROM examens",
-        "nb_salles": "SELECT COUNT(*) as val FROM lieux_examen",
-        "nb_profs": "SELECT COUNT(*) as val FROM professeurs",
-        "nb_etudiants": "SELECT COUNT(*) as val FROM etudiants"
+        "nb_exams": "SELECT COUNT(*) as val FROM exams",
+        "nb_rooms": "SELECT COUNT(*) as val FROM exam_rooms",
+        "nb_teachers": "SELECT COUNT(*) as val FROM teachers",
+        "nb_students": "SELECT COUNT(*) as val FROM students"
     }.items():
         result = execute_query(query)
         kpis[key] = float(result.iloc[0, 0]) if not result.empty else 0
     return kpis
 
 @st.cache_data(ttl=60)
-def get_occupation_globale():
-    return execute_query("""SELECT l.nom AS salle, l.capacite, COUNT(e.id) AS nb_examens, ROUND(AVG(CASE WHEN ins.nb_inscrits IS NOT NULL THEN (ins.nb_inscrits / l.capacite) * 100 ELSE 0 END), 1) AS taux_occupation FROM lieux_examen l LEFT JOIN examens e ON e.lieu_id = l.id LEFT JOIN (SELECT module_id, COUNT(etudiant_id) AS nb_inscrits FROM inscriptions GROUP BY module_id) ins ON ins.module_id = e.module_id GROUP BY l.id, l.nom, l.capacite ORDER BY taux_occupation DESC""")
+def get_global_occupancy():
+    return execute_query("""SELECT l.nom AS room, l.capacity, COUNT(e.id) AS nb_exams, ROUND(AVG(CASE WHEN ins.registered_count IS NOT NULL THEN (ins.registered_count / l.capacity) * 100 ELSE 0 END), 1) AS occupancy_rate FROM exam_rooms l LEFT JOIN exams e ON e.room_id = l.id LEFT JOIN (SELECT module_id, COUNT(student_id) AS registered_count FROM registrations GROUP BY module_id) ins ON ins.module_id = e.module_id GROUP BY l.id, l.nom, l.capacity ORDER BY occupancy_rate DESC""")
 
 @st.cache_data(ttl=60)
-def get_stats_par_departement():
-    return execute_query("""SELECT d.nom AS departement, COUNT(DISTINCT e.id) AS nb_examens, COUNT(DISTINCT m.id) AS nb_modules, COUNT(DISTINCT f.id) AS nb_formations FROM departements d LEFT JOIN formations f ON f.dept_id = d.id LEFT JOIN modules m ON m.formation_id = f.id LEFT JOIN examens e ON e.module_id = m.id GROUP BY d.id, d.nom ORDER BY nb_examens DESC""")
+def get_stats_by_department():
+    return execute_query("""SELECT d.nom AS department, COUNT(DISTINCT e.id) AS nb_exams, COUNT(DISTINCT m.id) AS nb_modules, COUNT(DISTINCT f.id) AS nb_formations FROM departments d LEFT JOIN formations f ON f.dept_id = d.id LEFT JOIN modules m ON m.formation_id = f.id LEFT JOIN exams e ON e.module_id = m.id GROUP BY d.id, d.nom ORDER BY nb_exams DESC""")
 
 @st.cache_data(ttl=60)
-def get_heures_enseignement():
-    return execute_query("""SELECT p.nom AS professeur, d.nom AS departement, COUNT(e.id) AS nb_examens, SUM(e.duree_minutes) / 60 AS heures_totales, COUNT(s.examen_id) AS nb_surveillances FROM professeurs p JOIN departements d ON d.id = p.dept_id LEFT JOIN examens e ON e.prof_id = p.id LEFT JOIN surveillances s ON s.prof_id = p.id GROUP BY p.id, p.nom, d.nom ORDER BY heures_totales DESC""")
+def get_teaching_hours():
+    return execute_query("""SELECT p.nom AS teacher, d.nom AS department, COUNT(e.id) AS nb_exams, SUM(e.duration_minutes) / 60 AS total_hours, COUNT(s.exam_id) AS nb_supervisions FROM teachers p JOIN departments d ON d.id = p.dept_id LEFT JOIN exams e ON e.teacher_id = p.id LEFT JOIN supervisions s ON s.teacher_id = p.id GROUP BY p.id, p.nom, d.nom ORDER BY total_hours DESC""")
 
 @st.cache_data(ttl=60)
-def get_edt_etudiant(formation_id):
-    return execute_query("""SELECT DISTINCT e.id, m.nom AS module, f.nom AS formation, f.id AS formation_id, p.nom AS professeur, l.nom AS salle, l.capacite, e.date_heure, e.duree_minutes, COUNT(DISTINCT i.etudiant_id) AS nb_inscrits, d.nom AS departement, d.id AS departement_id FROM examens e JOIN modules m ON m.id = e.module_id JOIN formations f ON f.id = m.formation_id JOIN departements d ON d.id = f.dept_id JOIN professeurs p ON p.id = e.prof_id JOIN lieux_examen l ON l.id = e.lieu_id LEFT JOIN inscriptions i ON i.module_id = e.module_id WHERE f.id = %s GROUP BY e.id, m.nom, f.nom, f.id, p.nom, l.nom, l.capacite, e.date_heure, e.duree_minutes, d.nom, d.id ORDER BY e.date_heure, f.nom""", params=(formation_id,))
+def get_student_schedule(formation_id):
+    return execute_query("""SELECT DISTINCT e.id, m.nom AS module, f.nom AS formation, f.id AS formation_id, p.nom AS teacher, l.nom AS room, l.capacity, e.date_time, e.duration_minutes, COUNT(DISTINCT i.student_id) AS registered_count, d.nom AS department, d.id AS department_id FROM exams e JOIN modules m ON m.id = e.module_id JOIN formations f ON f.id = m.formation_id JOIN departments d ON d.id = f.dept_id JOIN teachers p ON p.id = e.teacher_id JOIN exam_rooms l ON l.id = e.room_id LEFT JOIN registrations i ON i.module_id = e.module_id WHERE f.id = %s GROUP BY e.id, m.nom, f.nom, f.id, p.nom, l.nom, l.capacity, e.date_time, e.duration_minutes, d.nom, d.id ORDER BY e.date_time, f.nom""", params=(formation_id,))
 
-def generer_edt_optimiser():
+def generate_optimized_schedule():
     conn = get_connection()
     if not conn:
         return 0, 0
     cur = conn.cursor(dictionary=True)
     try:
-        cur.execute("DELETE FROM examens")
+        cur.execute("DELETE FROM exams")
         conn.commit()
-        cur.execute("""SELECT m.id AS module_id, m.nom AS module, f.id AS formation_id, f.dept_id AS dept_id, COALESCE(COUNT(DISTINCT i.etudiant_id), 1) AS nb_etudiants FROM modules m JOIN formations f ON f.id = m.formation_id LEFT JOIN inscriptions i ON i.module_id = m.id GROUP BY m.id, m.nom, f.id, f.dept_id ORDER BY nb_etudiants DESC""")
+        cur.execute("""SELECT m.id AS module_id, m.nom AS module, f.id AS formation_id, f.dept_id AS dept_id, COALESCE(COUNT(DISTINCT i.student_id), 1) AS nb_students FROM modules m JOIN formations f ON f.id = m.formation_id LEFT JOIN registrations i ON i.module_id = m.id GROUP BY m.id, m.nom, f.id, f.dept_id ORDER BY nb_students DESC""")
         modules = cur.fetchall()
-        cur.execute("SELECT id, capacite, nom FROM lieux_examen ORDER BY capacite DESC")
-        salles = cur.fetchall()
-        cur.execute("SELECT id, nom FROM professeurs")
-        profs = cur.fetchall()
-        if not modules or not salles or not profs:
-            st.error("❌ Données insuffisantes")
+        cur.execute("SELECT id, capacity, nom FROM exam_rooms ORDER BY capacity DESC")
+        rooms = cur.fetchall()
+        cur.execute("SELECT id, nom FROM teachers")
+        teachers = cur.fetchall()
+        if not modules or not rooms or not teachers:
+            st.error("❌ Insufficient data")
             return 0, 0
-        etudiants_par_module = {}
-        cur.execute("SELECT module_id, etudiant_id FROM inscriptions")
+        students_per_module = {}
+        cur.execute("SELECT module_id, student_id FROM registrations")
         for row in cur.fetchall():
-            if row['module_id'] not in etudiants_par_module:
-                etudiants_par_module[row['module_id']] = []
-            etudiants_par_module[row['module_id']].append(row['etudiant_id'])
+            if row['module_id'] not in students_per_module:
+                students_per_module[row['module_id']] = []
+            students_per_module[row['module_id']].append(row['student_id'])
         progress_bar = st.progress(0)
         status_text = st.empty()
-        formation_jour, salle_horaire, etudiant_jour, salles_occupees_par_slot = {}, {}, {}, {}
-        prof_exams_count = {p["id"]: 0 for p in profs}
+        formation_day, room_time, student_day, rooms_occupied_per_slot = {}, {}, {}, {}
+        teacher_exams_count = {p["id"]: 0 for p in teachers}
         success, failed, failed_modules, exams_to_insert = 0, 0, [], []
         for i, module in enumerate(modules):
             progress_bar.progress((i + 1) / len(modules))
-            status_text.text(f"⏳ Planification: {module['module']} ({i+1}/{len(modules)})")
-            planifie = False
-            etudiants_module = etudiants_par_module.get(module["module_id"], [])
-            start_idx = i % len(CRENEAUX)
-            creneaux_priority = CRENEAUX[start_idx:] + CRENEAUX[:start_idx]
-            for jour_offset in range((DATE_FIN - DATE_DEBUT).days + 1):
-                if planifie:
+            status_text.text(f"⏳ Scheduling: {module['module']} ({i+1}/{len(modules)})")
+            scheduled = False
+            module_students = students_per_module.get(module["module_id"], [])
+            start_idx = i % len(TIME_SLOTS)
+            time_slots_priority = TIME_SLOTS[start_idx:] + TIME_SLOTS[:start_idx]
+            for day_offset in range((END_DATE - START_DATE).days + 1):
+                if scheduled:
                     break
-                date_exam = (DATE_DEBUT + timedelta(days=jour_offset)).date()
-                if (module["formation_id"], date_exam) in formation_jour:
+                exam_date = (START_DATE + timedelta(days=day_offset)).date()
+                if (module["formation_id"], exam_date) in formation_day:
                     continue
-                for heure in creneaux_priority:
-                    if planifie:
+                for hour in time_slots_priority:
+                    if scheduled:
                         break
-                    dt = datetime.strptime(f"{date_exam} {heure}", "%Y-%m-%d %H:%M")
-                    if salles_occupees_par_slot.get(dt, 0) >= MAX_SALLES_PER_SLOT:
+                    dt = datetime.strptime(f"{exam_date} {hour}", "%Y-%m-%d %H:%M")
+                    if rooms_occupied_per_slot.get(dt, 0) >= MAX_ROOMS_PER_SLOT:
                         continue
-                    if any((etud_id, date_exam) in etudiant_jour for etud_id in etudiants_module):
+                    if any((student_id, exam_date) in student_day for student_id in module_students):
                         continue
-                    for salle in salles:
-                        if planifie:
+                    for room in rooms:
+                        if scheduled:
                             break
-                        if salle["capacite"] < module["nb_etudiants"]:
+                        if room["capacity"] < module["nb_students"]:
                             continue
-                        if (salle["id"], dt) in salle_horaire:
+                        if (room["id"], dt) in room_time:
                             continue
-                        prof_trouve = sorted(profs, key=lambda p: prof_exams_count[p["id"]])[0]
-                        exams_to_insert.append((module["module_id"], prof_trouve["id"], salle["id"], dt, DUREE_EXAM))
-                        salle_horaire[(salle["id"], dt)] = True
-                        formation_jour[(module["formation_id"], date_exam)] = True
-                        salles_occupees_par_slot[dt] = salles_occupees_par_slot.get(dt, 0) + 1
-                        prof_exams_count[prof_trouve["id"]] += 1
-                        for etud_id in etudiants_module:
-                            etudiant_jour[(etud_id, date_exam)] = True
+                        teacher_found = sorted(teachers, key=lambda p: teacher_exams_count[p["id"]])[0]
+                        exams_to_insert.append((module["module_id"], teacher_found["id"], room["id"], dt, EXAM_DURATION))
+                        room_time[(room["id"], dt)] = True
+                        formation_day[(module["formation_id"], exam_date)] = True
+                        rooms_occupied_per_slot[dt] = rooms_occupied_per_slot.get(dt, 0) + 1
+                        teacher_exams_count[teacher_found["id"]] += 1
+                        for student_id in module_students:
+                            student_day[(student_id, exam_date)] = True
                         success += 1
-                        planifie = True
-            if not planifie:
+                        scheduled = True
+            if not scheduled:
                 failed += 1
                 failed_modules.append(module["module"])
         if exams_to_insert:
-            cur.executemany("INSERT INTO examens (module_id, prof_id, lieu_id, date_heure, duree_minutes) VALUES (%s, %s, %s, %s, %s)", exams_to_insert)
+            cur.executemany("INSERT INTO exams (module_id, teacher_id, room_id, date_time, duration_minutes) VALUES (%s, %s, %s, %s, %s)", exams_to_insert)
             conn.commit()
         progress_bar.empty()
         status_text.empty()
         if failed_modules:
-            with st.expander(f"⚠️ Modules non planifiés ({failed})"):
+            with st.expander(f"⚠️ Unscheduled modules ({failed})"):
                 for mod in failed_modules[:20]:
                     st.write(f"- {mod}")
                 if failed > 20:
-                    st.write(f"... et {failed - 20} autres")
+                    st.write(f"... and {failed - 20} more")
         return success, failed
     except Exception as e:
         conn.rollback()
-        st.error(f"❌ Erreur génération : {e}")
+        st.error(f"❌ Generation error: {e}")
         return 0, 0
     finally:
         conn.close()
 
-# Page de connexion
-def page_connexion():
+# Completely new login page
+def login_page():
     st.markdown('<div class="login-split-container">', unsafe_allow_html=True)
     
-    # Panneau gauche
+    # Left panel
     st.markdown("""
         <div class="login-left-panel">
-            <div class="login-brand">SYSTÈME EXAMENS</div>
+            <div class="login-brand">EXAM SYSTEM</div>
             <div class="login-tagline">
-                Plateforme avancée pour la gestion des examens universitaires<br>
-                Système intelligent de planification et de suivi<br>
-                Solutions numériques complètes
+                Advanced platform for university exam management<br>
+                Smart scheduling, planning and monitoring system<br>
+                Comprehensive digital solutions
             </div>
         </div>
     """, unsafe_allow_html=True)
     
-    # Panneau droit
+    # Right panel
     col1, col2 = st.columns([1, 2])
     with col2:
-        st.markdown('<div class="login-right-panel"><h2 class="login-form-title">Connexion</h2>', unsafe_allow_html=True)
+        st.markdown('<div class="login-right-panel"><h2 class="login-form-title">LOGIN</h2>', unsafe_allow_html=True)
         
-        role = st.selectbox("Choisir le type de compte", list(ROLES.values()), key="role_select")
+        role = st.selectbox("Select account type", list(ROLES.values()), key="role_select")
         
-        if role == ROLES["vice_doyen"]:
-            if st.button("Connexion Vice-Doyen", use_container_width=True, key="login_vd"):
-                st.session_state.user_role, st.session_state.user_name = "vice_doyen", "Vice-Doyen"
+        if role == ROLES["vice_dean"]:
+            if st.button("Login as Vice-Dean", use_container_width=True, key="login_vd"):
+                st.session_state.user_role, st.session_state.user_name = "vice_dean", "Vice-Dean"
                 st.rerun()
         
         elif role == ROLES["admin_exams"]:
-            if st.button("Connexion Administrateur", use_container_width=True, key="login_admin"):
-                st.session_state.user_role, st.session_state.user_name = "admin_exams", "Administrateur"
-                st
+            if st.button("Login as Administrator", use_container_width=True, key="login_admin"):
+                st.session_state.user_role, st.session_state.user_name = "admin_exams", "Administrator"
+                st.rerun()
+        
+        elif role == ROLES["department_head"]:
+            depts = get_departments()
+            if not depts.empty:
+                dept_name = st.selectbox("Select Department", depts["nom"].tolist())
+                if st.button("Login", use_container_width=True, key="login_chef"):
+                    dept_id = depts[depts["nom"] == dept_name]["id"].values[0]
+                    st.session_state.user_role, st.session_state.user_name, st.session_state.user_dept_id = "department_head", f"Head {dept_name}", dept_id
+                    st.rerun()
+        
+        elif role == ROLES["teacher"]:
+            teachers = get_teachers_by_dept()
+            if not teachers.empty:
+                teacher_name = st.selectbox("Select your name", teachers["nom"].tolist())
+                if st.button("Login", use_container_width=True, key="login_prof"):
+                    teacher_data = teachers[teachers["nom"] == teacher_name].iloc[0]
+                    st.session_state.user_role, st.session_state.user_name, st.session_state.user_dept_id = "teacher", teacher_name, teacher_data["dept_id"]
+                    st.rerun()
+        
+        elif role == ROLES["student"]:
+            formations = get_formations_by_dept()
+            if not formations.empty:
+                formation_name = st.selectbox("Select your program", formations["nom"].tolist())
+                if st.button("Login", use_container_width=True, key="login_student"):
+                    formation_data = formations[formations["nom"] == formation_name].iloc[0]
+                    st.session_state.user_role, st.session_state.user_name, st.session_state.user_dept_id = "student", "Student", formation_data["dept_id"]
+                    st.rerun()
+        
+        st.markdown('</div>', unsafe_allow_html=True)
+    
+    st.markdown('</div>', unsafe_allow_html=True)
+
+# Vice-Dean dashboard - new design
+def dashboard_vice_dean():
+    st.markdown(f"""
+        <div class="hero-section">
+            <div class="hero-title">STRATEGIC DASHBOARD</div>
+            <div class="hero-description">Global view and detailed analysis of exams</div>
+            <div class="user-badge-horizontal">
+                <div class="user-badge-icon">👤</div>
+                <div class="user-badge-text">{st.session_state.user_name}</div>
+            </div>
+        </div>
+    """, unsafe_allow_html=True)
+    
+    kpis = get_global_kpis()
+    
+    # Horizontal statistics
+    st.markdown('<div class="stats-horizontal">', unsafe_allow_html=True)
+    stats_data = [
+        ("📚", int(kpis["nb_exams"]), "TOTAL EXAMS"),
+        ("🏛️", int(kpis["nb_rooms"]), "AVAILABLE ROOMS"),
+        ("👨‍🏫", int(kpis["nb_teachers"]), "TEACHERS"),
+        ("🎓", 13000, "STUDENTS")
+    ]
+    
+    for icon, value, label in stats_data:
+        st.markdown(f"""
+            <div class="stat-box-horizontal">
+                <div class="stat-icon-large">{icon}</div>
+                <div class="stat-content-horizontal">
+                    <div class="stat-label-horizontal">{label}</div>
+                    <div class="stat-value-horizontal">{value}</div>
+                </div>
+            </div>
+        """, unsafe_allow_html=True)
+    st.markdown('</div>', unsafe_allow_html=True)
+    
+    # Alerts
+    col1, col2 = st.columns(2)
+    with col1:
+        st.markdown("""
+            <div class="notification-box success">
+                <div class="notification-title">✅ ROOM CONFLICTS</div>
+                <div class="notification-value">0</div>
+            </div>
+        """, unsafe_allow_html=True)
+    
+    with col2:
+        st.markdown("""
+            <div class="notification-box success">
+                <div class="notification-title">✅ TEACHER CONFLICTS</div>
+                <div class="notification-value">0</div>
+            </div>
+        """, unsafe_allow_html=True)
+    
+    # Charts
+    st.markdown('<div class="content-box"><h2 class="section-title">ROOM OCCUPANCY</h2>', unsafe_allow_html=True)
+    occupancy = get_global_occupancy()
+    if not occupancy.empty:
+        fig = px.bar(occupancy, x="room", y="occupancy_rate", color="occupancy_rate", 
+                     color_continuous_scale=["#11998e", "#38ef7d", "#ffd200"])
+        fig.update_layout(plot_bgcolor='white', paper_bgcolor='white', font=dict(family="Raleway", size=12))
+        st.plotly_chart(fig, use_container_width=True)
+        st.dataframe(occupancy, use_container_width=True, height=300)
+    st.markdown('</div>', unsafe_allow_html=True)
+    
+    st.markdown('<div class="content-box"><h2 class="section-title">DEPARTMENT STATISTICS</h2>', unsafe_allow_html=True)
+    stats_dept = get_stats_by_department()
+    if not stats_dept.empty:
+        fig = px.bar(stats_dept, x="department", y="nb_exams", color="nb_exams",
+                     color_continuous_scale=["#667eea", "#764ba2"])
+        fig.update_layout(plot_bgcolor='white', paper_bgcolor='white', font=dict(family="Raleway"))
+        st.plotly_chart(fig, use_container_width=True)
+        st.dataframe(stats_dept, use_container_width=True, height=300)
+    st.markdown('</div>', unsafe_allow_html=True)
+    
+    st.markdown('<div class="content-box"><h2 class="section-title">TEACHER WORKLOAD</h2>', unsafe_allow_html=True)
+    hours = get_teaching_hours()
+    if not hours.empty:
+        fig = px.scatter(hours, x="nb_exams", y="total_hours", size="nb_supervisions",
+                        color="department", hover_name="teacher", size_max=40)
+        fig.update_layout(plot_bgcolor='white', paper_bgcolor='white', font=dict(family="Raleway"))
+        st.plotly_chart(fig, use_container_width=True)
+        st.dataframe(hours, use_container_width=True, height=300)
+    st.markdown('</div>', unsafe_allow_html=True)
+
+# Administrator dashboard - new design
+def dashboard_admin_exams():
+    st.markdown(f"""
+        <div class="hero-section">
+            <div class="hero-title">ADMINISTRATION PANEL</div>
+            <div class="hero-description">Complete management and automatic generation</div>
+            <div class="user-badge-horizontal">
+                <div class="user-badge-icon">⚙️</div>
+                <div class="user-badge-text">{st.session_state.user_name}</div>
+            </div>
+        </div>
+    """, unsafe_allow_html=True)
+    
+    st.markdown('<div class="content-box"><h2 class="section-title">MANAGEMENT TOOLS</h2>', unsafe_allow_html=True)
+    
+    col1, col2, col3 = st.columns(3)
+    
+    with col1:
+        st.markdown('<div class="tool-card"><div class="tool-icon">🚀</div><div class="tool-title">AUTO GENERATION</div></div>', unsafe_allow_html=True)
+        if st.button("LAUNCH", use_container_width=True, key="gen_schedule"):
+            with st.spinner("Processing..."):
+                import time
+                start = time.time()
+                success, failed = generate_optimized_schedule()
+                elapsed = time.time() - start
+                total = success + failed
+                rate = (success / total * 100) if total > 0 else 0
+                st.markdown(f"""
+                    <div class="notification-box success">
+                        <div class="notification-title">✅ COMPLETED</div>
+                        <p style="font-size: 1.2rem; margin-top: 1rem;">{success}/{total} modules ({rate:.1f}%) in {elapsed:.2f}s</p>
+                    </div>
+                """, unsafe_allow_html=True)
+                if failed == 0:
+                    st.balloons()
+                st.cache_data.clear()
+                st.rerun()
+    
+    with col2:
+        st.markdown('<div class="tool-card"><div class="tool-icon">🔄</div><div class="tool-title">REFRESH</div></div>', unsafe_allow_html=True)
+        if st.button("REFRESH", use_container_width=True, key="refresh"):
+            st.cache_data.clear()
+            st.success("✅ Data refreshed")
+            st.rerun()
+    
+    with col3:
+        st.markdown('<div class="tool-card"><div class="tool-icon">🗑️</div><div class="tool-title">RESET</div></div>', unsafe_allow_html=True)
+        if st.button("CLEAR", use_container_width=True, key="reset"):
+            conn = get_connection()
+            if conn:
+                cur = conn.cursor()
+                cur.execute("DELETE FROM exams")
+                conn.commit()
+                conn.close()
+                st.success("✅ Schedule cleared")
+                st.cache_data.clear()
+                st.rerun()
+    
+    st.markdown('</div>', unsafe_allow_html=True)
+    
+    st.markdown('<div class="content-box"><h2 class="section-title">COMPLETE SCHEDULE</h2>', unsafe_allow_html=True)
+    schedule = load_schedule_complete()
+    if not schedule.empty:
+        st.markdown('<div class="metric-row">', unsafe_allow_html=True)
+        metrics = [
+            ("📚 EXAMS", len(schedule)),
+            ("🏛️ DEPARTMENTS", schedule["department"].nunique()),
+            ("📖 PROGRAMS", schedule["formation"].nunique())
+        ]
+        for label, value in metrics:
+            st.markdown(f"""
+                <div class="metric-simple">
+                    <div class="metric-simple-label">{label}</div>
+                    <div class="metric-simple-value">{value}</div>
+                </div>
+            """, unsafe_allow_html=True)
+        st.markdown('</div>', unsafe_allow_html=True)
+        
+        st.dataframe(schedule, use_container_width=True, height=500)
+        csv = schedule.to_csv(index=False).encode('utf-8')
+        st.download_button("📥 DOWNLOAD CSV", csv, "schedule.csv", "text/csv", key="dl_csv")
+    else:
+        st.info("No data available")
+    st.markdown('</div>', unsafe_allow_html=True)
+
+# Department head dashboard - new design
+def dashboard_department_head():
+    st.markdown(f"""
+        <div class="hero-section">
+            <div class="hero-title">DEPARTMENT SPACE</div>
+            <div class="hero-description">Supervision and monitoring of exams</div>
+            <div class="user-badge-horizontal">
+                <div class="user-badge-icon">🏛️</div>
+                <div class="user-badge-text">{st.session_state.user_name}</div>
+            </div>
+        </div>
+    """, unsafe_allow_html=True)
+    
+    dept_id = st.session_state.user_dept_id
+    dept_schedule = load_schedule_complete(dept_id=dept_id)
+    
+    if not dept_schedule.empty:
+        st.markdown(f"""
+            <div class="department-header">
+                <div class="department-name">🏛️ {dept_schedule.iloc[0]["department"]}</div>
+            </div>
+        """, unsafe_allow_html=True)
+        
+        st.markdown('<div class="stats-horizontal">', unsafe_allow_html=True)
+        stats = [
+            ("📚", len(dept_schedule), "EXAMS"),
+            ("📖", dept_schedule["formation"].nunique(), "PROGRAMS"),
+            ("✅", len(dept_schedule), "APPROVED")
+        ]
+        for icon, value, label in stats:
+            st.markdown(f"""
+                <div class="stat-box-horizontal">
+                    <div class="stat-icon-large">{icon}</div>
+                    <div class="stat-content-horizontal">
+                        <div class="stat-label-horizontal">{label}</div>
+                        <div class="stat-value-horizontal">{value}</div>
+                    </div>
+                </div>
+            """, unsafe_allow_html=True)
+        st.markdown('</div>', unsafe_allow_html=True)
+        
+        st.markdown('<div class="content-box"><h2 class="section-title">EXAMS BY PROGRAM</h2>', unsafe_allow_html=True)
+        for formation in dept_schedule["formation"].unique():
+            st.markdown(f"### 📖 {formation}")
+            formation_data = dept_schedule[dept_schedule["formation"] == formation]
+            for _, exam in formation_data.iterrows():
+                dt = pd.to_datetime(exam['date_time'])
+                st.markdown(f"""
+                    <div class="exam-horizontal-card">
+                        <div class="exam-time-block">
+                            <div class="exam-time">{dt.strftime('%H:%M')}</div>
+                            <div class="exam-date">{dt.strftime('%d/%m/%Y')}</div>
+                        </div>
+                        <div class="exam-details-flex">
+                            <div class="exam-title-horizontal">{exam['module']}</div>
+                            <div class="exam-meta">
+                                <div class="exam-meta-item">🏫 {exam['room']}</div>
+                                <div class="exam-meta-item">👨‍🏫 {exam['teacher']}</div>
+                                <div class="exam-meta-item">👥 {exam['registered_count']} students</div>
+                            </div>
+                        </div>
+                    </div>
+                """, unsafe_allow_html=True)
+        st.markdown('</div>', unsafe_allow_html=True)
+        
+        st.markdown('<div class="content-box"><h2 class="section-title">ANALYSIS</h2>', unsafe_allow_html=True)
+        col1, col2 = st.columns(2)
+        with col1:
+            dept_schedule["date"] = pd.to_datetime(dept_schedule["date_time"]).dt.date
+            exams_per_day = dept_schedule.groupby("date").size().reset_index(name="nb_exams")
+            fig = px.bar(exams_per_day, x="date", y="nb_exams", title="Per day")
+            fig.update_layout(plot_bgcolor='white', paper_bgcolor='white', font=dict(family="Raleway"))
+            st.plotly_chart(fig, use_container_width=True)
+        with col2:
+            exams_per_program = dept_schedule.groupby("formation").size().reset_index(name="nb_exams")
+            fig = px.pie(exams_per_program, values="nb_exams", names="formation", title="By program")
+            st.plotly_chart(fig, use_container_width=True)
+        st.markdown('</div>', unsafe_allow_html=True)
+    else:
+        st.info("No data")
+
+# Teacher dashboard - new design
+def dashboard_teacher():
+    st.markdown(f"""
+        <div class="hero-section">
+            <div class="hero-title">MY SPACE</div>
+            <div class="hero-description">My supervisions and responsibilities</div>
+            <div class="user-badge-horizontal">
+                <div class="user-badge-icon">👨‍🏫</div>
+                <div class="user-badge-text">{st.session_state.user_name}</div>
+            </div>
+        </div>
+    """, unsafe_allow_html=True)
+    
+    query = """SELECT e.id, m.nom AS module, f.nom AS formation, d.nom AS department, l.nom AS room, e.date_time, COUNT(DISTINCT i.student_id) AS registered_count FROM exams e JOIN modules m ON m.id = e.module_id JOIN formations f ON f.id = m.formation_id JOIN departments d ON d.id = f.dept_id JOIN exam_rooms l ON l.id = e.room_id JOIN teachers p ON p.id = e.teacher_id LEFT JOIN registrations i ON i.module_id = m.id WHERE p.nom = %s GROUP BY e.id, m.nom, f.nom, d.nom, l.nom, e.date_time ORDER BY e.date_time"""
+    my_exams = execute_query(query, params=(st.session_state.user_name,))
+    
+    if not my_exams.empty:
+        st.markdown(f"""
+            <div class="stat-box-horizontal" style="max-width: 500px; margin: 2rem auto;">
+                <div class="stat-icon-large">📚</div>
+                <div class="stat-content-horizontal">
+                    <div class="stat-label-horizontal">MY SUPERVISIONS</div>
+                    <div class="stat-value-horizontal">{len(my_exams)}</div>
+                </div>
+            </div>
+        """, unsafe_allow_html=True)
+        
+        st.markdown('<div class="content-box"><h2 class="section-title">MY CALENDAR</h2>', unsafe_allow_html=True)
+        for _, exam in my_exams.iterrows():
+            dt = pd.to_datetime(exam['date_time'])
+            st.markdown(f"""
+                <div class="exam-horizontal-card">
+                    <div class="exam-time-block">
+                        <div class="exam-time">{dt.strftime('%H:%M')}</div>
+                        <div class="exam-date">{dt.strftime('%d/%m/%Y')}</div>
+                    </div>
+                    <div class="exam-details-flex">
+                        <div class="exam-title-horizontal">{exam['module']}</div>
+                        <div class="exam-meta">
+                            <div class="exam-meta-item">📖 {exam['formation']}</div>
+                            <div class="exam-meta-item">🏛️ {exam['department']}</div>
+                            <div class="exam-meta-item">🏫 {exam['room']}</div>
+                        </div>
+                    </div>
+                </div>
+            """, unsafe_allow_html=True)
+        st.markdown('</div>', unsafe_allow_html=True)
+    else:
+        st.info("No supervisions scheduled")
+
+# Student dashboard - new design
+def dashboard_student():
+    st.markdown("""
+        <div class="hero-section">
+            <div class="hero-title">MY CALENDAR</div>
+            <div class="hero-description">My personal exams</div>
+            <div class="user-badge-horizontal">
+                <div class="user-badge-icon">🎓</div>
+                <div class="user-badge-text">Student</div>
+            </div>
+        </div>
+    """, unsafe_allow_html=True)
+    
+    formations = get_formations_by_dept(st.session_state.user_dept_id)
+    if not formations.empty:
+        st.markdown('<div class="content-box">', unsafe_allow_html=True)
+        formation_selected = st.selectbox("My program", formations["nom"].tolist())
+        formation_id = formations[formations["nom"] == formation_selected]["id"].values[0]
+        st.markdown('</div>', unsafe_allow_html=True)
+        
+        student_schedule = get_student_schedule(formation_id)
+        if not student_schedule.empty:
+            st.markdown(f"""
+                <div class="stat-box-horizontal" style="max-width: 500px; margin: 2rem auto;">
+                    <div class="stat-icon-large">📚</div>
+                    <div class="stat-content-horizontal">
+                        <div class="stat-label-horizontal">MY EXAMS</div>
+                        <div class="stat-value-horizontal">{len(student_schedule)}</div>
+                    </div>
+                </div>
+            """, unsafe_allow_html=True)
+            
+            st.markdown('<div class="content-box"><h2 class="section-title">PERSONAL SCHEDULE</h2>', unsafe_allow_html=True)
+            student_schedule["date"] = pd.to_datetime(student_schedule["date_time"]).dt.date
+            for date in sorted(student_schedule["date"].unique()):
+                st.markdown(f'<div class="date-header-box">📅 {date.strftime("%A %d %B %Y").upper()}</div>', unsafe_allow_html=True)
+                day_exams = student_schedule[student_schedule["date"] == date]
+                for _, exam in day_exams.iterrows():
+                    dt = pd.to_datetime(exam['date_time'])
+                    st.markdown(f"""
+                        <div class="exam-horizontal-card">
+                            <div class="exam-time-block">
+                                <div class="exam-time">{dt.strftime('%H:%M')}</div>
+                                <div class="exam-date">{dt.strftime('%d/%m')}</div>
+                            </div>
+                            <div class="exam-details-flex">
+                                <div class="exam-title-horizontal">{exam['module']}</div>
+                                <div class="exam-meta">
+                                    <div class="exam-meta-item">🏫 {exam['room']}</div>
+                                    <div class="exam-meta-item">👨‍🏫 {exam['teacher']}</div>
+                                </div>
+                            </div>
+                        </div>
+                    """, unsafe_allow_html=True)
+            st.markdown('</div>', unsafe_allow_html=True)
+            
+            csv = student_schedule.to_csv(index=False).encode('utf-8')
+            st.download_button("📥 DOWNLOAD", csv, "my_calendar.csv", "text/csv", key="dl_student")
+        else:
+            st.info("No exams scheduled")
+    else:
+        st.warning("No program available")
+
+# Navigation
+def main():
+    with st.sidebar:
+        if st.session_state.user_role:
+            st.markdown("""
+                <div class="sidebar-profile-box">
+                    <div class="sidebar-title">ACTIVE ACCOUNT</div>
+                    <div class="sidebar-role">{}</div>
+                    <div class="sidebar-name">{}</div>
+                </div>
+            """.format(ROLES[st.session_state.user_role], st.session_state.user_name), unsafe_allow_html=True)
+            
+            if st.button("🚪 LOGOUT", use_container_width=True, key="logout"):
+                st.session_state.user_role = None
+                st.session_state.user_name = None
+                st.session_state.user_dept_id = None
+                st.rerun()
+    
+    if not st.session_state.user_role:
+        login_page()
+    elif st.session_state.user_role == "vice_dean":
+        dashboard_vice_dean()
+    elif st.session_state.user_role == "admin_exams":
+        dashboard_admin_exams()
+    elif st.session_state.user_role == "department_head":
+        dashboard_department_head()
+    elif st.session_state.user_role == "teacher":
+        dashboard_teacher()
+    elif st.session_state.user_role == "student":
+        dashboard_student()
+
+if __name__ == "__main__":
+    main()
