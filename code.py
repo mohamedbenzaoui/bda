@@ -5,9 +5,9 @@ from datetime import datetime, timedelta
 import plotly.express as px
 import plotly.graph_objects as go
 
-# ==============================
+# ====================================
 # CONFIGURATION
-# ==============================
+# ====================================
 DUREE_EXAM = 90
 CRENEAUX = ["08:30", "11:00", "14:00"]
 DATE_DEBUT = datetime(2026, 1, 10)
@@ -28,9 +28,9 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# ==============================
+# ====================================
 # MODERN CSS STYLES
-# ==============================
+# ====================================
 st.markdown("""
     <style>
     /* Global Styles */
@@ -316,9 +316,9 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-# ==============================
+# ====================================
 # SESSION STATE
-# ==============================
+# ====================================
 if "user_role" not in st.session_state:
     st.session_state.user_role = None
 if "user_name" not in st.session_state:
@@ -326,9 +326,9 @@ if "user_name" not in st.session_state:
 if "user_dept_id" not in st.session_state:
     st.session_state.user_dept_id = None
 
-# ==============================
+# ====================================
 # DATABASE FUNCTIONS (Keep all original logic)
-# ==============================
+# ====================================
 def get_connection():
     try:
         return mysql.connector.connect(
@@ -674,9 +674,9 @@ def generer_edt_optimiser():
     finally:
         conn.close()
 
-# ==============================
+# ====================================
 # LOGIN PAGE
-# ==============================
+# ====================================
 def page_connexion():
     st.markdown("""
         <div class="header-card">
@@ -742,9 +742,9 @@ def page_connexion():
         
         st.markdown('</div>', unsafe_allow_html=True)
 
-# ==============================
+# ====================================
 # DASHBOARDS
-# ==============================
+# ====================================
 def dashboard_vice_doyen():
     st.markdown(f"""
         <div class="header-card">
@@ -1171,9 +1171,9 @@ def dashboard_etudiant():
     else:
         st.warning("Aucune formation disponible")
 
-# ==============================
+# ====================================
 # MAIN NAVIGATION
-# ==============================
+# ====================================
 def main():
     with st.sidebar:
         if st.session_state.user_role:
