@@ -22,7 +22,7 @@ ROLES = {
 
 st.set_page_config(page_title="Plateforme Examens", layout="wide", initial_sidebar_state="expanded")
 
-# تصميم جديد 100% - ألوان مختلفة، ترتيب مختلف
+# Design moderne et professionnel
 st.markdown("""
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;700;900&family=Montserrat:wght@400;600;800&display=swap');
@@ -37,14 +37,14 @@ body {
     font-family: 'Raleway', sans-serif;
 }
 
-/* خلفية بتدرج مختلف تماماً */
+/* Arrière-plan avec dégradé moderne */
 .main {
     background: linear-gradient(165deg, #0a0e27 0%, #1e3a5f 35%, #2c5f7c 100%);
     min-height: 100vh;
     padding: 3rem 2rem;
 }
 
-/* بطاقة رئيسية بشكل مربع وليس دائري */
+/* Section héro principale */
 .hero-section {
     background: linear-gradient(90deg, #ff6b6b 0%, #ee5a6f 50%, #c44569 100%);
     padding: 4rem 3rem;
@@ -95,7 +95,7 @@ body {
     color: white;
 }
 
-/* إحصائيات أفقية وليست عمودية */
+/* Statistiques horizontales */
 .stats-horizontal {
     display: flex;
     gap: 1.5rem;
@@ -144,7 +144,7 @@ body {
     color: white;
 }
 
-/* بطاقة محتوى بشكل مستطيل */
+/* Boîte de contenu */
 .content-box {
     background: white;
     border-radius: 12px;
@@ -154,7 +154,7 @@ body {
     border-left: 8px solid #ff6b6b;
 }
 
-/* عنوان قسم بخط سفلي */
+/* Titre de section */
 .section-title {
     font-family: 'Montserrat', sans-serif;
     font-size: 2.2rem;
@@ -166,7 +166,7 @@ body {
     text-transform: uppercase;
 }
 
-/* تنبيهات بتصميم بسيط */
+/* Boîtes de notification */
 .notification-box {
     background: #fff3cd;
     border: 3px solid #ffc107;
@@ -196,7 +196,7 @@ body {
     font-weight: 900;
 }
 
-/* بطاقة امتحان مختلفة تماماً - أفقية */
+/* Carte d'examen horizontale */
 .exam-horizontal-card {
     background: linear-gradient(to right, #f8f9fa 0%, #e9ecef 100%);
     border-radius: 10px;
@@ -261,7 +261,7 @@ body {
     font-weight: 600;
 }
 
-/* صفحة تسجيل الدخول - تصميم جانبي */
+/* Page de connexion avec design divisé */
 .login-split-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -310,7 +310,7 @@ body {
     margin-bottom: 2rem;
 }
 
-/* أزرار بزوايا حادة */
+/* Boutons modernes */
 .stButton > button {
     background: linear-gradient(90deg, #11998e 0%, #38ef7d 100%);
     color: white;
@@ -331,7 +331,7 @@ body {
     transform: translateY(-2px);
 }
 
-/* شريط جانبي */
+/* Barre latérale */
 section[data-testid="stSidebar"] {
     background: linear-gradient(180deg, #2c3e50 0%, #34495e 100%);
 }
@@ -374,7 +374,7 @@ section[data-testid="stSidebar"] > div {
     text-align: center;
 }
 
-/* شارة قسم مختلفة */
+/* En-tête de département */
 .department-header {
     background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
     color: white;
@@ -390,7 +390,7 @@ section[data-testid="stSidebar"] > div {
     text-transform: uppercase;
 }
 
-/* شارة تاريخ مربعة */
+/* En-tête de date */
 .date-header-box {
     background: #2c3e50;
     color: white;
@@ -403,20 +403,20 @@ section[data-testid="stSidebar"] > div {
     letter-spacing: 1px;
 }
 
-/* جدول بيانات */
+/* Tableau de données */
 .dataframe {
     border-radius: 10px !important;
     border: 2px solid #dee2e6 !important;
 }
 
-/* شريط تقدم */
+/* Barre de progression */
 .stProgress > div > div {
     background: linear-gradient(90deg, #11998e 0%, #38ef7d 100%);
     height: 10px;
     border-radius: 5px;
 }
 
-/* تخطيط شبكي للأدوات */
+/* Grille d'outils */
 .tools-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -450,7 +450,7 @@ section[data-testid="stSidebar"] > div {
     color: #2c3e50;
 }
 
-/* رسوم بيانية */
+/* Conteneur de graphique */
 .chart-container {
     background: white;
     border-radius: 12px;
@@ -459,7 +459,7 @@ section[data-testid="stSidebar"] > div {
     margin: 2rem 0;
 }
 
-/* تصميم مختلف للـ metrics */
+/* Métriques */
 .metric-row {
     display: flex;
     gap: 2rem;
@@ -490,7 +490,7 @@ section[data-testid="stSidebar"] > div {
     color: #2c3e50;
 }
 
-/* استجابة للشاشات الصغيرة */
+/* Responsive pour petits écrans */
 @media (max-width: 768px) {
     .login-split-container {
         grid-template-columns: 1fr;
@@ -523,7 +523,7 @@ if "user_name" not in st.session_state:
 if "user_dept_id" not in st.session_state:
     st.session_state.user_dept_id = None
 
-# الدوال لم تتغير
+# Fonctions de base de données
 def get_connection():
     try:
         return mysql.connector.connect(
@@ -703,464 +703,35 @@ def generer_edt_optimiser():
     finally:
         conn.close()
 
-# صفحة تسجيل دخول جديدة تماماً
+# Page de connexion
 def page_connexion():
     st.markdown('<div class="login-split-container">', unsafe_allow_html=True)
     
-    # اللوحة اليسرى
+    # Panneau gauche
     st.markdown("""
         <div class="login-left-panel">
-            <div class="login-brand">EXAM SYSTEM</div>
+            <div class="login-brand">SYSTÈME EXAMENS</div>
             <div class="login-tagline">
-                منصة متقدمة لإدارة الامتحانات الجامعية<br>
-                نظام ذكي للجدولة والتخطيط والمتابعة<br>
-                حلول رقمية شاملة
+                Plateforme avancée pour la gestion des examens universitaires<br>
+                Système intelligent de planification et de suivi<br>
+                Solutions numériques complètes
             </div>
         </div>
     """, unsafe_allow_html=True)
     
-    # اللوحة اليمنى
+    # Panneau droit
     col1, col2 = st.columns([1, 2])
     with col2:
-        st.markdown('<div class="login-right-panel"><h2 class="login-form-title">تسجيل الدخول</h2>', unsafe_allow_html=True)
+        st.markdown('<div class="login-right-panel"><h2 class="login-form-title">Connexion</h2>', unsafe_allow_html=True)
         
-        role = st.selectbox("اختر نوع الحساب", list(ROLES.values()), key="role_select")
+        role = st.selectbox("Choisir le type de compte", list(ROLES.values()), key="role_select")
         
         if role == ROLES["vice_doyen"]:
-            if st.button("دخول كنائب عميد", use_container_width=True, key="login_vd"):
+            if st.button("Connexion Vice-Doyen", use_container_width=True, key="login_vd"):
                 st.session_state.user_role, st.session_state.user_name = "vice_doyen", "Vice-Doyen"
                 st.rerun()
         
         elif role == ROLES["admin_exams"]:
-            if st.button("دخول كمسؤول", use_container_width=True, key="login_admin"):
+            if st.button("Connexion Administrateur", use_container_width=True, key="login_admin"):
                 st.session_state.user_role, st.session_state.user_name = "admin_exams", "Administrateur"
-                st.rerun()
-        
-        elif role == ROLES["chef_dept"]:
-            depts = get_departements()
-            if not depts.empty:
-                dept_nom = st.selectbox("اختر القسم", depts["nom"].tolist())
-                if st.button("دخول", use_container_width=True, key="login_chef"):
-                    dept_id = depts[depts["nom"] == dept_nom]["id"].values[0]
-                    st.session_state.user_role, st.session_state.user_name, st.session_state.user_dept_id = "chef_dept", f"Chef {dept_nom}", dept_id
-                    st.rerun()
-        
-        elif role == ROLES["enseignant"]:
-            profs = get_professeurs_by_dept()
-            if not profs.empty:
-                prof_nom = st.selectbox("اختر اسمك", profs["nom"].tolist())
-                if st.button("دخول", use_container_width=True, key="login_prof"):
-                    prof_data = profs[profs["nom"] == prof_nom].iloc[0]
-                    st.session_state.user_role, st.session_state.user_name, st.session_state.user_dept_id = "enseignant", prof_nom, prof_data["dept_id"]
-                    st.rerun()
-        
-        elif role == ROLES["etudiant"]:
-            formations = get_formations_by_dept()
-            if not formations.empty:
-                formation_nom = st.selectbox("اختر التخصص", formations["nom"].tolist())
-                if st.button("دخول", use_container_width=True, key="login_etud"):
-                    formation_data = formations[formations["nom"] == formation_nom].iloc[0]
-                    st.session_state.user_role, st.session_state.user_name, st.session_state.user_dept_id = "etudiant", "Étudiant", formation_data["dept_id"]
-                    st.rerun()
-        
-        st.markdown('</div>', unsafe_allow_html=True)
-    
-    st.markdown('</div>', unsafe_allow_html=True)
-
-# لوحة نائب العميد - تصميم جديد
-def dashboard_vice_doyen():
-    st.markdown(f"""
-        <div class="hero-section">
-            <div class="hero-title">DASHBOARD STRATÉGIQUE</div>
-            <div class="hero-description">Vue globale et analyses détaillées des examens</div>
-            <div class="user-badge-horizontal">
-                <div class="user-badge-icon">👤</div>
-                <div class="user-badge-text">{st.session_state.user_name}</div>
-            </div>
-        </div>
-    """, unsafe_allow_html=True)
-    
-    kpis = get_kpis_globaux()
-    
-    # إحصائيات أفقية
-    st.markdown('<div class="stats-horizontal">', unsafe_allow_html=True)
-    stats_data = [
-        ("📚", int(kpis["nb_examens"]), "EXAMENS TOTAL"),
-        ("🏛️", int(kpis["nb_salles"]), "SALLES DISPONIBLES"),
-        ("👨‍🏫", int(kpis["nb_profs"]), "PROFESSEURS"),
-        ("🎓", 13000, "ÉTUDIANTS")
-    ]
-    
-    for icon, value, label in stats_data:
-        st.markdown(f"""
-            <div class="stat-box-horizontal">
-                <div class="stat-icon-large">{icon}</div>
-                <div class="stat-content-horizontal">
-                    <div class="stat-label-horizontal">{label}</div>
-                    <div class="stat-value-horizontal">{value}</div>
-                </div>
-            </div>
-        """, unsafe_allow_html=True)
-    st.markdown('</div>', unsafe_allow_html=True)
-    
-    # تنبيهات
-    col1, col2 = st.columns(2)
-    with col1:
-        st.markdown("""
-            <div class="notification-box success">
-                <div class="notification-title">✅ CONFLITS SALLES</div>
-                <div class="notification-value">0</div>
-            </div>
-        """, unsafe_allow_html=True)
-    
-    with col2:
-        st.markdown("""
-            <div class="notification-box success">
-                <div class="notification-title">✅ CONFLITS PROFS</div>
-                <div class="notification-value">0</div>
-            </div>
-        """, unsafe_allow_html=True)
-    
-    # رسومات
-    st.markdown('<div class="content-box"><h2 class="section-title">OCCUPATION DES SALLES</h2>', unsafe_allow_html=True)
-    occupation = get_occupation_globale()
-    if not occupation.empty:
-        fig = px.bar(occupation, x="salle", y="taux_occupation", color="taux_occupation", 
-                     color_continuous_scale=["#11998e", "#38ef7d", "#ffd200"])
-        fig.update_layout(plot_bgcolor='white', paper_bgcolor='white', font=dict(family="Raleway", size=12))
-        st.plotly_chart(fig, use_container_width=True)
-        st.dataframe(occupation, use_container_width=True, height=300)
-    st.markdown('</div>', unsafe_allow_html=True)
-    
-    st.markdown('<div class="content-box"><h2 class="section-title">STATISTIQUES DÉPARTEMENTS</h2>', unsafe_allow_html=True)
-    stats_dept = get_stats_par_departement()
-    if not stats_dept.empty:
-        fig = px.bar(stats_dept, x="departement", y="nb_examens", color="nb_examens",
-                     color_continuous_scale=["#667eea", "#764ba2"])
-        fig.update_layout(plot_bgcolor='white', paper_bgcolor='white', font=dict(family="Raleway"))
-        st.plotly_chart(fig, use_container_width=True)
-        st.dataframe(stats_dept, use_container_width=True, height=300)
-    st.markdown('</div>', unsafe_allow_html=True)
-    
-    st.markdown('<div class="content-box"><h2 class="section-title">CHARGE PROFESSEURS</h2>', unsafe_allow_html=True)
-    heures = get_heures_enseignement()
-    if not heures.empty:
-        fig = px.scatter(heures, x="nb_examens", y="heures_totales", size="nb_surveillances",
-                        color="departement", hover_name="professeur", size_max=40)
-        fig.update_layout(plot_bgcolor='white', paper_bgcolor='white', font=dict(family="Raleway"))
-        st.plotly_chart(fig, use_container_width=True)
-        st.dataframe(heures, use_container_width=True, height=300)
-    st.markdown('</div>', unsafe_allow_html=True)
-
-# لوحة المسؤول - تصميم جديد
-def dashboard_admin_examens():
-    st.markdown(f"""
-        <div class="hero-section">
-            <div class="hero-title">PANNEAU ADMINISTRATION</div>
-            <div class="hero-description">Gestion complète et génération automatique</div>
-            <div class="user-badge-horizontal">
-                <div class="user-badge-icon">⚙️</div>
-                <div class="user-badge-text">{st.session_state.user_name}</div>
-            </div>
-        </div>
-    """, unsafe_allow_html=True)
-    
-    st.markdown('<div class="content-box"><h2 class="section-title">OUTILS DE GESTION</h2>', unsafe_allow_html=True)
-    
-    col1, col2, col3 = st.columns(3)
-    
-    with col1:
-        st.markdown('<div class="tool-card"><div class="tool-icon">🚀</div><div class="tool-title">GÉNÉRATION AUTO</div></div>', unsafe_allow_html=True)
-        if st.button("LANCER", use_container_width=True, key="gen_edt"):
-            with st.spinner("Traitement..."):
-                import time
-                start = time.time()
-                success, failed = generer_edt_optimiser()
-                elapsed = time.time() - start
-                total = success + failed
-                taux = (success / total * 100) if total > 0 else 0
-                st.markdown(f"""
-                    <div class="notification-box success">
-                        <div class="notification-title">✅ TERMINÉ</div>
-                        <p style="font-size: 1.2rem; margin-top: 1rem;">{success}/{total} modules ({taux:.1f}%) en {elapsed:.2f}s</p>
-                    </div>
-                """, unsafe_allow_html=True)
-                if failed == 0:
-                    st.balloons()
-                st.cache_data.clear()
-                st.rerun()
-    
-    with col2:
-        st.markdown('<div class="tool-card"><div class="tool-icon">🔄</div><div class="tool-title">ACTUALISER</div></div>', unsafe_allow_html=True)
-        if st.button("RAFRAÎCHIR", use_container_width=True, key="refresh"):
-            st.cache_data.clear()
-            st.success("✅ Données actualisées")
-            st.rerun()
-    
-    with col3:
-        st.markdown('<div class="tool-card"><div class="tool-icon">🗑️</div><div class="tool-title">RÉINITIALISER</div></div>', unsafe_allow_html=True)
-        if st.button("EFFACER", use_container_width=True, key="reset"):
-            conn = get_connection()
-            if conn:
-                cur = conn.cursor()
-                cur.execute("DELETE FROM examens")
-                conn.commit()
-                conn.close()
-                st.success("✅ Planning effacé")
-                st.cache_data.clear()
-                st.rerun()
-    
-    st.markdown('</div>', unsafe_allow_html=True)
-    
-    st.markdown('<div class="content-box"><h2 class="section-title">PLANNING COMPLET</h2>', unsafe_allow_html=True)
-    edt = load_edt_complete()
-    if not edt.empty:
-        st.markdown('<div class="metric-row">', unsafe_allow_html=True)
-        metrics = [
-            ("📚 EXAMENS", len(edt)),
-            ("🏛️ DÉPARTEMENTS", edt["departement"].nunique()),
-            ("📖 FORMATIONS", edt["formation"].nunique())
-        ]
-        for label, value in metrics:
-            st.markdown(f"""
-                <div class="metric-simple">
-                    <div class="metric-simple-label">{label}</div>
-                    <div class="metric-simple-value">{value}</div>
-                </div>
-            """, unsafe_allow_html=True)
-        st.markdown('</div>', unsafe_allow_html=True)
-        
-        st.dataframe(edt, use_container_width=True, height=500)
-        csv = edt.to_csv(index=False).encode('utf-8')
-        st.download_button("📥 TÉLÉCHARGER CSV", csv, "planning.csv", "text/csv", key="dl_csv")
-    else:
-        st.info("Aucune donnée disponible")
-    st.markdown('</div>', unsafe_allow_html=True)
-
-# لوحة رئيس القسم - تصميم جديد
-def dashboard_chef_dept():
-    st.markdown(f"""
-        <div class="hero-section">
-            <div class="hero-title">ESPACE DÉPARTEMENT</div>
-            <div class="hero-description">Supervision et suivi des examens</div>
-            <div class="user-badge-horizontal">
-                <div class="user-badge-icon">🏛️</div>
-                <div class="user-badge-text">{st.session_state.user_name}</div>
-            </div>
-        </div>
-    """, unsafe_allow_html=True)
-    
-    dept_id = st.session_state.user_dept_id
-    edt_dept = load_edt_complete(dept_id=dept_id)
-    
-    if not edt_dept.empty:
-        st.markdown(f"""
-            <div class="department-header">
-                <div class="department-name">🏛️ {edt_dept.iloc[0]["departement"]}</div>
-            </div>
-        """, unsafe_allow_html=True)
-        
-        st.markdown('<div class="stats-horizontal">', unsafe_allow_html=True)
-        stats = [
-            ("📚", len(edt_dept), "EXAMENS"),
-            ("📖", edt_dept["formation"].nunique(), "FORMATIONS"),
-            ("✅", len(edt_dept), "VALIDÉS")
-        ]
-        for icon, value, label in stats:
-            st.markdown(f"""
-                <div class="stat-box-horizontal">
-                    <div class="stat-icon-large">{icon}</div>
-                    <div class="stat-content-horizontal">
-                        <div class="stat-label-horizontal">{label}</div>
-                        <div class="stat-value-horizontal">{value}</div>
-                    </div>
-                </div>
-            """, unsafe_allow_html=True)
-        st.markdown('</div>', unsafe_allow_html=True)
-        
-        st.markdown('<div class="content-box"><h2 class="section-title">EXAMENS PAR FORMATION</h2>', unsafe_allow_html=True)
-        for formation in edt_dept["formation"].unique():
-            st.markdown(f"### 📖 {formation}")
-            formation_data = edt_dept[edt_dept["formation"] == formation]
-            for _, exam in formation_data.iterrows():
-                dt = pd.to_datetime(exam['date_heure'])
-                st.markdown(f"""
-                    <div class="exam-horizontal-card">
-                        <div class="exam-time-block">
-                            <div class="exam-time">{dt.strftime('%H:%M')}</div>
-                            <div class="exam-date">{dt.strftime('%d/%m/%Y')}</div>
-                        </div>
-                        <div class="exam-details-flex">
-                            <div class="exam-title-horizontal">{exam['module']}</div>
-                            <div class="exam-meta">
-                                <div class="exam-meta-item">🏫 {exam['salle']}</div>
-                                <div class="exam-meta-item">👨‍🏫 {exam['professeur']}</div>
-                                <div class="exam-meta-item">👥 {exam['nb_inscrits']} étudiants</div>
-                            </div>
-                        </div>
-                    </div>
-                """, unsafe_allow_html=True)
-        st.markdown('</div>', unsafe_allow_html=True)
-        
-        st.markdown('<div class="content-box"><h2 class="section-title">ANALYSES</h2>', unsafe_allow_html=True)
-        col1, col2 = st.columns(2)
-        with col1:
-            edt_dept["date"] = pd.to_datetime(edt_dept["date_heure"]).dt.date
-            exams_par_jour = edt_dept.groupby("date").size().reset_index(name="nb_examens")
-            fig = px.bar(exams_par_jour, x="date", y="nb_examens", title="Par jour")
-            fig.update_layout(plot_bgcolor='white', paper_bgcolor='white', font=dict(family="Raleway"))
-            st.plotly_chart(fig, use_container_width=True)
-        with col2:
-            exams_par_formation = edt_dept.groupby("formation").size().reset_index(name="nb_examens")
-            fig = px.pie(exams_par_formation, values="nb_examens", names="formation", title="Par formation")
-            st.plotly_chart(fig, use_container_width=True)
-        st.markdown('</div>', unsafe_allow_html=True)
-    else:
-        st.info("Aucune donnée")
-
-# لوحة الأستاذ - تصميم جديد
-def dashboard_enseignant():
-    st.markdown(f"""
-        <div class="hero-section">
-            <div class="hero-title">MON ESPACE</div>
-            <div class="hero-description">Mes surveillances et responsabilités</div>
-            <div class="user-badge-horizontal">
-                <div class="user-badge-icon">👨‍🏫</div>
-                <div class="user-badge-text">{st.session_state.user_name}</div>
-            </div>
-        </div>
-    """, unsafe_allow_html=True)
-    
-    query = """SELECT e.id, m.nom AS module, f.nom AS formation, d.nom AS departement, l.nom AS salle, e.date_heure, COUNT(DISTINCT i.etudiant_id) AS nb_inscrits FROM examens e JOIN modules m ON m.id = e.module_id JOIN formations f ON f.id = m.formation_id JOIN departements d ON d.id = f.dept_id JOIN lieux_examen l ON l.id = e.lieu_id JOIN professeurs p ON p.id = e.prof_id LEFT JOIN inscriptions i ON i.module_id = m.id WHERE p.nom = %s GROUP BY e.id, m.nom, f.nom, d.nom, l.nom, e.date_heure ORDER BY e.date_heure"""
-    mes_examens = execute_query(query, params=(st.session_state.user_name,))
-    
-    if not mes_examens.empty:
-        st.markdown(f"""
-            <div class="stat-box-horizontal" style="max-width: 500px; margin: 2rem auto;">
-                <div class="stat-icon-large">📚</div>
-                <div class="stat-content-horizontal">
-                    <div class="stat-label-horizontal">MES SURVEILLANCES</div>
-                    <div class="stat-value-horizontal">{len(mes_examens)}</div>
-                </div>
-            </div>
-        """, unsafe_allow_html=True)
-        
-        st.markdown('<div class="content-box"><h2 class="section-title">MON CALENDRIER</h2>', unsafe_allow_html=True)
-        for _, exam in mes_examens.iterrows():
-            dt = pd.to_datetime(exam['date_heure'])
-            st.markdown(f"""
-                <div class="exam-horizontal-card">
-                    <div class="exam-time-block">
-                        <div class="exam-time">{dt.strftime('%H:%M')}</div>
-                        <div class="exam-date">{dt.strftime('%d/%m/%Y')}</div>
-                    </div>
-                    <div class="exam-details-flex">
-                        <div class="exam-title-horizontal">{exam['module']}</div>
-                        <div class="exam-meta">
-                            <div class="exam-meta-item">📖 {exam['formation']}</div>
-                            <div class="exam-meta-item">🏛️ {exam['departement']}</div>
-                            <div class="exam-meta-item">🏫 {exam['salle']}</div>
-                        </div>
-                    </div>
-                </div>
-            """, unsafe_allow_html=True)
-        st.markdown('</div>', unsafe_allow_html=True)
-    else:
-        st.info("Aucune surveillance")
-
-# لوحة الطالب - تصميم جديد
-def dashboard_etudiant():
-    st.markdown("""
-        <div class="hero-section">
-            <div class="hero-title">MON CALENDRIER</div>
-            <div class="hero-description">Mes examens personnels</div>
-            <div class="user-badge-horizontal">
-                <div class="user-badge-icon">🎓</div>
-                <div class="user-badge-text">Étudiant</div>
-            </div>
-        </div>
-    """, unsafe_allow_html=True)
-    
-    formations = get_formations_by_dept(st.session_state.user_dept_id)
-    if not formations.empty:
-        st.markdown('<div class="content-box">', unsafe_allow_html=True)
-        formation_selected = st.selectbox("Ma formation", formations["nom"].tolist())
-        formation_id = formations[formations["nom"] == formation_selected]["id"].values[0]
-        st.markdown('</div>', unsafe_allow_html=True)
-        
-        edt_formation = get_edt_etudiant(formation_id)
-        if not edt_formation.empty:
-            st.markdown(f"""
-                <div class="stat-box-horizontal" style="max-width: 500px; margin: 2rem auto;">
-                    <div class="stat-icon-large">📚</div>
-                    <div class="stat-content-horizontal">
-                        <div class="stat-label-horizontal">MES EXAMENS</div>
-                        <div class="stat-value-horizontal">{len(edt_formation)}</div>
-                    </div>
-                </div>
-            """, unsafe_allow_html=True)
-            
-            st.markdown('<div class="content-box"><h2 class="section-title">PLANNING PERSONNEL</h2>', unsafe_allow_html=True)
-            edt_formation["date"] = pd.to_datetime(edt_formation["date_heure"]).dt.date
-            for date in sorted(edt_formation["date"].unique()):
-                st.markdown(f'<div class="date-header-box">📅 {date.strftime("%A %d %B %Y").upper()}</div>', unsafe_allow_html=True)
-                examens_jour = edt_formation[edt_formation["date"] == date]
-                for _, exam in examens_jour.iterrows():
-                    dt = pd.to_datetime(exam['date_heure'])
-                    st.markdown(f"""
-                        <div class="exam-horizontal-card">
-                            <div class="exam-time-block">
-                                <div class="exam-time">{dt.strftime('%H:%M')}</div>
-                                <div class="exam-date">{dt.strftime('%d/%m')}</div>
-                            </div>
-                            <div class="exam-details-flex">
-                                <div class="exam-title-horizontal">{exam['module']}</div>
-                                <div class="exam-meta">
-                                    <div class="exam-meta-item">🏫 {exam['salle']}</div>
-                                    <div class="exam-meta-item">👨‍🏫 {exam['professeur']}</div>
-                                </div>
-                            </div>
-                        </div>
-                    """, unsafe_allow_html=True)
-            st.markdown('</div>', unsafe_allow_html=True)
-            
-            csv = edt_formation.to_csv(index=False).encode('utf-8')
-            st.download_button("📥 TÉLÉCHARGER", csv, "mon_calendrier.csv", "text/csv", key="dl_student")
-        else:
-            st.info("Aucun examen")
-    else:
-        st.warning("Aucune formation")
-
-# التنقل
-def main():
-    with st.sidebar:
-        if st.session_state.user_role:
-            st.markdown("""
-                <div class="sidebar-profile-box">
-                    <div class="sidebar-title">COMPTE ACTIF</div>
-                    <div class="sidebar-role">{}</div>
-                    <div class="sidebar-name">{}</div>
-                </div>
-            """.format(ROLES[st.session_state.user_role], st.session_state.user_name), unsafe_allow_html=True)
-            
-            if st.button("🚪 DÉCONNEXION", use_container_width=True, key="logout"):
-                st.session_state.user_role = None
-                st.session_state.user_name = None
-                st.session_state.user_dept_id = None
-                st.rerun()
-    
-    if not st.session_state.user_role:
-        page_connexion()
-    elif st.session_state.user_role == "vice_doyen":
-        dashboard_vice_doyen()
-    elif st.session_state.user_role == "admin_exams":
-        dashboard_admin_examens()
-    elif st.session_state.user_role == "chef_dept":
-        dashboard_chef_dept()
-    elif st.session_state.user_role == "enseignant":
-        dashboard_enseignant()
-    elif st.session_state.user_role == "etudiant":
-        dashboard_etudiant()
-
-if __name__ == "__main__":
-    main()
+                st
