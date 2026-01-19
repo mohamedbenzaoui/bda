@@ -41,7 +41,7 @@ st.markdown("""
     
     /* Main Background */
     .main {
-        background: linear-gradient(to bottom right, #0f172a 0%, #1e293b 50%, #334155 100%);
+        background: linear-gradient(to bottom right, #e0f2fe 0%, #ddd6fe 50%, #fae8ff 100%);
         padding: 1.5rem;
     }
     
@@ -51,67 +51,65 @@ st.markdown("""
     
     /* Top Navigation Bar */
     .top-nav {
-        background: rgba(255, 255, 255, 0.05);
-        backdrop-filter: blur(10px);
-        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: white;
+        border: 2px solid #e0e7ff;
         border-radius: 20px;
         padding: 1.5rem 2rem;
         margin-bottom: 2rem;
         display: flex;
         justify-content: space-between;
         align-items: center;
+        box-shadow: 0 4px 20px rgba(99, 102, 241, 0.15);
     }
     
     .brand-logo {
         font-size: 1.8rem;
         font-weight: 800;
-        background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 50%, #ec4899 100%);
+        background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #db2777 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         letter-spacing: -1px;
     }
     
     .nav-title {
-        color: white;
+        color: #1e1b4b;
         font-size: 1.5rem;
         font-weight: 700;
         margin: 0;
     }
     
     .nav-subtitle {
-        color: #94a3b8;
+        color: #6366f1;
         font-size: 0.9rem;
         margin-top: 0.25rem;
     }
     
     /* Role Pill */
     .role-pill {
-        background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+        background: linear-gradient(135deg, #6366f1, #8b5cf6);
         color: white;
         padding: 0.6rem 1.5rem;
         border-radius: 50px;
         font-weight: 600;
         font-size: 0.85rem;
         display: inline-block;
-        box-shadow: 0 4px 20px rgba(59, 130, 246, 0.4);
+        box-shadow: 0 4px 20px rgba(99, 102, 241, 0.4);
     }
     
     /* Glass Card */
     .glass-card {
-        background: rgba(255, 255, 255, 0.08);
-        backdrop-filter: blur(10px);
-        border: 1px solid rgba(255, 255, 255, 0.15);
+        background: white;
+        border: 2px solid #e0e7ff;
         border-radius: 24px;
         padding: 2rem;
         margin-bottom: 1.5rem;
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        box-shadow: 0 8px 32px rgba(99, 102, 241, 0.1);
     }
     
     /* Metric Box */
     .metric-box {
-        background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(139, 92, 246, 0.15));
-        backdrop-filter: blur(10px);
-        border: 1px solid rgba(255, 255, 255, 0.2);
+        background: linear-gradient(135deg, #dbeafe 0%, #e0e7ff 100%);
+        border: 2px solid #c7d2fe;
         border-radius: 20px;
         padding: 2rem;
         text-align: center;
@@ -120,67 +118,70 @@ st.markdown("""
     
     .metric-box:hover {
         transform: translateY(-8px);
-        border-color: rgba(59, 130, 246, 0.5);
-        box-shadow: 0 12px 40px rgba(59, 130, 246, 0.3);
+        border-color: #6366f1;
+        box-shadow: 0 12px 40px rgba(99, 102, 241, 0.25);
+        background: linear-gradient(135deg, #bfdbfe 0%, #c7d2fe 100%);
     }
     
     .metric-icon {
         font-size: 2.5rem;
         margin-bottom: 1rem;
-        filter: drop-shadow(0 4px 8px rgba(59, 130, 246, 0.4));
+        filter: drop-shadow(0 4px 8px rgba(99, 102, 241, 0.3));
     }
     
     .metric-number {
         font-size: 3rem;
         font-weight: 800;
-        color: white;
+        background: linear-gradient(135deg, #4f46e5, #7c3aed);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
         line-height: 1;
         margin: 0.5rem 0;
     }
     
     .metric-text {
-        color: #94a3b8;
+        color: #4f46e5;
         font-size: 0.95rem;
-        font-weight: 500;
+        font-weight: 600;
         text-transform: uppercase;
         letter-spacing: 1px;
     }
     
     /* Alert Box */
     .alert-box {
-        background: rgba(239, 68, 68, 0.15);
-        border: 2px solid rgba(239, 68, 68, 0.4);
+        background: linear-gradient(135deg, #fecaca 0%, #fca5a5 100%);
+        border: 2px solid #f87171;
         border-radius: 16px;
         padding: 1.5rem;
         text-align: center;
     }
     
     .alert-box.success {
-        background: rgba(34, 197, 94, 0.15);
-        border-color: rgba(34, 197, 94, 0.4);
+        background: linear-gradient(135deg, #bbf7d0 0%, #86efac 100%);
+        border-color: #4ade80;
     }
     
     .alert-box.warning {
-        background: rgba(251, 146, 60, 0.15);
-        border-color: rgba(251, 146, 60, 0.4);
+        background: linear-gradient(135deg, #fed7aa 0%, #fdba74 100%);
+        border-color: #fb923c;
     }
     
     .alert-number {
         font-size: 2.5rem;
         font-weight: 800;
-        color: white;
+        color: #1e1b4b;
         margin: 0.5rem 0;
     }
     
     .alert-label {
-        color: #cbd5e1;
+        color: #312e81;
         font-size: 1rem;
         font-weight: 600;
     }
     
     /* Section Title */
     .section-title {
-        color: white;
+        color: #1e1b4b;
         font-size: 1.5rem;
         font-weight: 700;
         margin: 2rem 0 1.5rem 0;
@@ -193,14 +194,16 @@ st.markdown("""
         content: '';
         width: 4px;
         height: 32px;
-        background: linear-gradient(to bottom, #3b82f6, #8b5cf6);
+        background: linear-gradient(to bottom, #6366f1, #8b5cf6);
         border-radius: 4px;
     }
     
     /* Exam Timeline Card */
     .exam-timeline-card {
-        background: rgba(255, 255, 255, 0.05);
-        border-left: 4px solid #3b82f6;
+        background: white;
+        border-left: 4px solid #6366f1;
+        border: 2px solid #e0e7ff;
+        border-left: 4px solid #6366f1;
         border-radius: 16px;
         padding: 1.5rem;
         margin: 1rem 0;
@@ -208,15 +211,16 @@ st.markdown("""
     }
     
     .exam-timeline-card:hover {
-        background: rgba(255, 255, 255, 0.1);
+        background: #f5f3ff;
         border-left-color: #8b5cf6;
         transform: translateX(8px);
+        box-shadow: 0 4px 20px rgba(99, 102, 241, 0.15);
     }
     
     .exam-header {
         font-size: 1.3rem;
         font-weight: 700;
-        color: white;
+        color: #1e1b4b;
         margin-bottom: 1rem;
     }
     
@@ -228,7 +232,7 @@ st.markdown("""
     }
     
     .exam-info-item {
-        color: #94a3b8;
+        color: #6366f1;
         font-size: 0.95rem;
         display: flex;
         align-items: center;
@@ -236,7 +240,7 @@ st.markdown("""
     }
     
     .exam-info-item strong {
-        color: #e2e8f0;
+        color: #1e1b4b;
     }
     
     /* Login Container */
@@ -248,14 +252,13 @@ st.markdown("""
     }
     
     .login-card {
-        background: rgba(255, 255, 255, 0.08);
-        backdrop-filter: blur(20px);
-        border: 1px solid rgba(255, 255, 255, 0.2);
+        background: white;
+        border: 2px solid #e0e7ff;
         border-radius: 32px;
         padding: 3rem;
         max-width: 500px;
         width: 100%;
-        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        box-shadow: 0 20px 60px rgba(99, 102, 241, 0.2);
     }
     
     .login-header {
@@ -272,20 +275,20 @@ st.markdown("""
     .login-title {
         font-size: 2.2rem;
         font-weight: 800;
-        background: linear-gradient(135deg, #3b82f6, #8b5cf6, #ec4899);
+        background: linear-gradient(135deg, #4f46e5, #7c3aed, #db2777);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         margin-bottom: 0.5rem;
     }
     
     .login-subtitle {
-        color: #94a3b8;
+        color: #6366f1;
         font-size: 1rem;
     }
     
     /* Buttons */
     .stButton > button {
-        background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+        background: linear-gradient(135deg, #6366f1, #8b5cf6);
         color: white;
         border: none;
         border-radius: 16px;
@@ -293,19 +296,18 @@ st.markdown("""
         font-weight: 700;
         font-size: 1rem;
         transition: all 0.3s ease;
-        box-shadow: 0 8px 24px rgba(59, 130, 246, 0.4);
-        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 8px 24px rgba(99, 102, 241, 0.3);
     }
     
     .stButton > button:hover {
         transform: translateY(-3px);
-        box-shadow: 0 12px 32px rgba(59, 130, 246, 0.6);
-        background: linear-gradient(135deg, #2563eb, #7c3aed);
+        box-shadow: 0 12px 32px rgba(99, 102, 241, 0.5);
+        background: linear-gradient(135deg, #4f46e5, #7c3aed);
     }
     
     /* Department Badge */
     .dept-badge {
-        background: linear-gradient(135deg, #06b6d4, #3b82f6);
+        background: linear-gradient(135deg, #06b6d4, #6366f1);
         color: white;
         padding: 1.25rem 2rem;
         border-radius: 16px;
@@ -313,25 +315,25 @@ st.markdown("""
         font-size: 1.2rem;
         text-align: center;
         margin: 1.5rem 0;
-        box-shadow: 0 8px 24px rgba(59, 130, 246, 0.3);
+        box-shadow: 0 8px 24px rgba(99, 102, 241, 0.3);
     }
     
     /* Date Badge */
     .date-section {
-        background: rgba(59, 130, 246, 0.1);
-        border: 1px solid rgba(59, 130, 246, 0.3);
+        background: linear-gradient(135deg, #dbeafe, #e0e7ff);
+        border: 2px solid #6366f1;
         border-radius: 12px;
         padding: 1rem 1.5rem;
         margin: 1.5rem 0 1rem 0;
-        color: #60a5fa;
+        color: #4f46e5;
         font-weight: 700;
         font-size: 1.1rem;
     }
     
     /* Sidebar */
     section[data-testid="stSidebar"] {
-        background: linear-gradient(to bottom, #1e293b, #0f172a);
-        border-right: 1px solid rgba(255, 255, 255, 0.1);
+        background: linear-gradient(to bottom, #f5f3ff, #faf5ff);
+        border-right: 2px solid #e0e7ff;
     }
     
     section[data-testid="stSidebar"] > div {
@@ -339,15 +341,16 @@ st.markdown("""
     }
     
     .sidebar-card {
-        background: rgba(255, 255, 255, 0.05);
-        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: white;
+        border: 2px solid #e0e7ff;
         border-radius: 16px;
         padding: 1.5rem;
         margin-bottom: 1rem;
+        box-shadow: 0 4px 12px rgba(99, 102, 241, 0.08);
     }
     
     .sidebar-title {
-        color: white;
+        color: #1e1b4b;
         font-size: 1rem;
         font-weight: 700;
         margin-bottom: 1rem;
@@ -356,20 +359,20 @@ st.markdown("""
     }
     
     .sidebar-text {
-        color: #94a3b8;
+        color: #6366f1;
         font-size: 0.95rem;
     }
     
     /* Data Tables */
     .dataframe {
-        background: rgba(255, 255, 255, 0.05) !important;
+        background: white !important;
         border-radius: 16px !important;
-        border: 1px solid rgba(255, 255, 255, 0.1) !important;
+        border: 2px solid #e0e7ff !important;
     }
     
     /* Progress */
     .stProgress > div > div {
-        background: linear-gradient(90deg, #3b82f6, #8b5cf6, #ec4899);
+        background: linear-gradient(90deg, #6366f1, #8b5cf6, #db2777);
         border-radius: 10px;
     }
     
@@ -383,22 +386,22 @@ st.markdown("""
     
     /* Input Fields */
     .stSelectbox, .stTextInput {
-        color: white;
+        color: #1e1b4b;
     }
     
     .stSelectbox > div > div, .stTextInput > div > div {
-        background: rgba(255, 255, 255, 0.05);
-        border: 1px solid rgba(255, 255, 255, 0.2);
+        background: white;
+        border: 2px solid #e0e7ff;
         border-radius: 12px;
-        color: white;
+        color: #1e1b4b;
     }
     
     /* Chart Container */
     .chart-container {
-        background: rgba(255, 255, 255, 0.03);
+        background: #f8fafc;
         border-radius: 20px;
         padding: 1.5rem;
-        border: 1px solid rgba(255, 255, 255, 0.1);
+        border: 2px solid #e0e7ff;
     }
     </style>
 """, unsafe_allow_html=True)
@@ -934,9 +937,9 @@ def dashboard_vice_doyen():
             fig = px.bar(stats_dept, x="departement", y="nb_examens", color="nb_examens",
                         color_continuous_scale=["#3b82f6", "#8b5cf6"])
             fig.update_layout(
-                plot_bgcolor='rgba(0,0,0,0)',
-                paper_bgcolor='rgba(0,0,0,0)',
-                font=dict(color='white', family="Poppins")
+                plot_bgcolor='white',
+                paper_bgcolor='white',
+                font=dict(color='#1e1b4b', family="Poppins")
             )
             st.plotly_chart(fig, use_container_width=True)
             st.markdown('</div>', unsafe_allow_html=True)
